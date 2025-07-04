@@ -1,16 +1,25 @@
 package com.hortfrutapp;
 
 import com.hortfrutapp.view.Atendente;
-import com.hortfrutapp.model.Fruta;
 import com.hortfrutapp.service.Estoque;
 
 public class HortfrutApp {
 
-	public static void main(String[] args) {
-		
-		Atendente atendente = new Atendente ();
-		atendente.menu();
-		
-	}
+    public static void main(String[] args) {
+        Atendente atendente = new Atendente();
+        Estoque estoque = new Estoque();
+        int opcaoMenu = 0;
 
+        do {
+            opcaoMenu = atendente.menu();
+
+            if (opcaoMenu >= 1 && opcaoMenu <= 3) {
+                estoque.gerenciadorApp(opcaoMenu, atendente);
+            } else if (opcaoMenu == 4) {
+                atendente.encerrando();
+            } else {
+                atendente.erro();
+            }
+        } while (opcaoMenu != 4);
+    }
 }
