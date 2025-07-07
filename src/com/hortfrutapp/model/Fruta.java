@@ -1,45 +1,26 @@
 package com.hortfrutapp.model;
 
-public class Fruta {
 
-	private String nome;
-	private double preco;
-	private int quantidade;
+public class Fruta extends Produto {
+
+	String nome;
+	double peso;
 	
 		public Fruta () {
-			this.nome = "";
-			this.preco = 0.0;
-			this.quantidade = 0;
+			this.peso = 0.0;
 		}
 		
-		public Fruta (String nome, double preco, int quantidade) {
-			this.nome = nome;
-			this.preco = preco;
-			this.quantidade = quantidade;
+		public Fruta (String nome, double preco, int quantidade, double peso) {
+			super(nome, preco, quantidade);
+			this.peso = peso;
 		}
 
-			public String getNome() {
-				return nome;
+			public double getPeso (){
+				return peso;
 			}
-	
-			public void setNome(String nome) {
-				this.nome = nome;
-			}
-	
-			public double getPreco() {
-				return preco;
-			}
-	
-			public void setPreco(double preco) {
-				this.preco = preco;
-			}
-	
-			public int getQuantidade() {
-				return quantidade;
-			}
-	
-			public void setQuantidade(int quantidade) {
-				this.quantidade = quantidade;
+
+			public void setPeso (double peso){
+				this.peso = peso;
 			}
 		
 		
