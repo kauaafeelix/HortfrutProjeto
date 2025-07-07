@@ -1,5 +1,5 @@
 package com.hortfrutapp.service;
-import com.hortfrutapp.model.Fruta;
+import com.hortfrutapp.model.*;
 import com.hortfrutapp.view.Atendente;
 
 import java.util.List;
@@ -8,10 +8,11 @@ import java.util.ArrayList;
 public class Estoque {
 
 	private List<Fruta>estoqueFruta;
-	
+	private List <Verdura>estoqueVerdura;
+
 	public Estoque () {
 		estoqueFruta = new ArrayList<>();
-		
+		estoqueVerdura = new ArrayList<>();
 	}
 	
 	public List<Fruta> getEstoqueFruta(){
@@ -22,17 +23,30 @@ public class Estoque {
 		this.estoqueFruta = estoqueFruta;
 	}
 
+    public List <Verdura> getEstoqueVerdura (){
+        return estoqueVerdura;
+    }
+
+    public void setEstoqueVerdura (List <Verdura>estoqueVerdura){
+        this.estoqueVerdura = estoqueVerdura;
+    }
+
 	public void gerenciadorApp (int opcao, Atendente atendente){
         switch (opcao){
             case 1 ->{
-                String nome = atendente.nomeFruta();
-                double preco = atendente.precoFruta();
-                int quantidade = atendente.quantidadeFrutas();
-				Fruta fruta = new Fruta(nome, preco, quantidade);
+                Fruta fruta = atendente.cadastrarFrutas(); 
+            if (fruta != null) {
                 estoqueFruta.add(fruta);
             }
-            
+            }
             case 2 ->{
+                Verdura verdura = atendente.cadastrarVerduras();
+                if (verdura != null) {
+                    estoqueVerdura.add(verdura); 
+                }
+            }
+            
+            case 3 ->{
                 if (estoqueFruta.isEmpty()) {
                     atendente.frutaN();
                 } else {
@@ -42,7 +56,17 @@ public class Estoque {
                 }
             }
 
-            case 3 -> {
+            case 4 ->{
+                if (estoqueVerdura.isEmpty()) {
+                    atendente.VerduraN();
+                } else {
+                    for (Verdura verdura : estoqueVerdura) {
+                        atendente.listarVerduras(verdura);
+                    }
+                }
+            }
+
+            case 5 -> {
                String nome = atendente.removerFruta();
                boolean removido = false; 
 
@@ -50,7 +74,7 @@ public class Estoque {
                    if (estoqueFruta.get(indice).getNome().equalsIgnoreCase(nome)) {
                        estoqueFruta.remove(indice);
                        removido = true;
-                       System.out.println("Fruta removida com sucesso!");
+                       atendente.frutaRemovida();
                        break;
                    }
                }
@@ -58,6 +82,23 @@ public class Estoque {
                    atendente.frutaNaoEncontrado(nome);
             }
 		}
+
+        case 6 -> {
+            String nome = atendente.removerVerdura();
+            boolean removido = false; 
+
+            for( int indice = 0; indice < estoqueVerdura.size(); indice ++) {
+                if (estoqueVerdura.get(indice).getNome().equalsIgnoreCase(nome)) {
+                    estoqueVerdura.remove(indice);
+                    removido = true;
+                    atendente.verduraRemovida();
+                    break;
+                }
+            }
+            if (!removido) {
+                atendente.verduraNaoEncontrado(nome);
+         }
+     }
 	}
 }
 }
