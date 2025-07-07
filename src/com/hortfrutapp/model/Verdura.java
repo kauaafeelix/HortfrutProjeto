@@ -1,7 +1,7 @@
 package com.hortfrutapp.model;
 
 public class Verdura extends Produto {
-    String tipo;
+    private String tipo;
 
 
     public Verdura (){

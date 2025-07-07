@@ -3,8 +3,8 @@ package com.hortfrutapp.model;
 
 public class Fruta extends Produto {
 
-	String nome;
-	double peso;
+	private String nome;
+	private double peso;
 	
 		public Fruta () {
 			this.peso = 0.0;
