@@ -2,6 +2,7 @@ package com.hortfrutapp;
 
 import com.hortfrutapp.view.Atendente;
 import com.hortfrutapp.service.Estoque;
+import com.hortfrutapp.model.*;
 
 public class HortfrutApp {
 
@@ -13,13 +14,11 @@ public class HortfrutApp {
         do {
             opcaoMenu = atendente.menu();
 
-            if (opcaoMenu >= 1 && opcaoMenu <= 6) {
+            if (opcaoMenu >= 1 && opcaoMenu <= 3) {
                 estoque.gerenciadorApp(opcaoMenu, atendente);
-            } else if (opcaoMenu == 7) {
-                atendente.encerrando();
             } else {
                 atendente.erro();
             }
-        } while (opcaoMenu != 7);
+        } while (opcaoMenu != 4);
     }
 }

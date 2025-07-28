@@ -23,5 +23,9 @@ public class Fruta extends Produto {
 				this.peso = peso;
 			}
 		
-		
+		@Override
+
+		public String toString(){
+			return "Fruta [ Nome: "+getNome() +"\nPreço: "+getPreco()+"\nQuantidade: "+getQuantidade()+"\nPeso: "+getPeso() +" ]";
+		}
 }
