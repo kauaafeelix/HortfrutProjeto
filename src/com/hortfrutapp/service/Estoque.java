@@ -21,45 +21,58 @@ public class Estoque {
         this.estoqueProduto = estoqueProduto;
     }
 
-    Scanner leia = new Scanner (System.in);
+    Scanner leiaStr = new Scanner (System.in);
+    Scanner leiaNum = new Scanner (System.in);
+    
 	public void gerenciadorApp (int opcao, Atendente atendente){
         switch (opcao){
             case 1 ->{
                 int opcaoSubMenu = atendente.subMenu();
                 switch (opcaoSubMenu) {
                     case 1 ->{
-                        Produto frutaProduto = atendente.cadastrarFrutas(leia);
-                        if (frutaProduto != null) {
-                            estoqueProduto.add(frutaProduto);
+                        Fruta fruta = atendente.cadastrarFrutas(leiaStr, leiaNum);
+                        if (fruta != null) {
+                            estoqueProduto.add(fruta);
                         }
                     }
                     case 2 ->{
-                        Produto verduraProduto = atendente.cadastrarVerduras(leia);
-                        if (verduraProduto != null) {
-                            estoqueProduto.add(verduraProduto); 
+                        Verdura verdura = atendente.cadastrarVerduras(leiaStr, leiaNum);
+                        if (verdura != null) {
+                            estoqueProduto.add(verdura); 
                         }
                     }
                 }
             }
             case 2 ->{
-                    atendente.menuLista();               
-                    switch (opcao) {
+                    int opcaopesquisa = atendente.menuLista();               
+                    switch (opcaopesquisa) {
                         case 1 -> {
+                        	boolean encontrado = false;
                             for (Produto produto : estoqueProduto) {
-                                atendente.listarProdutos(produto);
+                            	if (produto instanceof Fruta fruta) {
+                                    System.out.println(fruta);
+                                    encontrado = true;
+                                    }else if (produto instanceof Verdura verdura) {
+                                    System.out.println(verdura);
+                                    encontrado = true;
+                                }
+                            }
+                            
+                            if (encontrado == false) {
+                            	atendente.frutaN();
                             }
                         }
                         case 2 -> {
                             for (Produto produto : estoqueProduto) {
-                                if (produto instanceof Fruta) {
-                                    atendente.listarProdutos(produto);
+                                if (produto instanceof Fruta fruta) {
+                                    System.out.println(fruta);
                                 }
                             }
                         }
                         case 3 -> {
                             for (Produto produto : estoqueProduto) {
-                                if (produto instanceof Verdura) {
-                                    atendente.listarProdutos(produto);
+                                if (produto instanceof Verdura verdura) {
+                                    System.out.println(verdura);
                                 }
                             }
                         }
@@ -68,8 +81,8 @@ public class Estoque {
                 }
             
             case 3 ->{
-                atendente.menuRemover();
-                switch (opcao) {
+               int opcaoRemover = atendente.menuRemover();
+                switch (opcaoRemover) {
                     case 1 ->{
                         String nome = atendente.removerFruta();
                         boolean removido = false; 
@@ -96,7 +109,7 @@ public class Estoque {
                                 removido = true;
                                 atendente.removerProduto();
                                 break;
-                            }
+                            } 	
                         }
                          if (!removido) {
                             atendente.VerduraN();

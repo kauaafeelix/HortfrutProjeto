@@ -23,7 +23,7 @@ public class Verdura extends Produto {
 
     @Override
     public String toString(){
-        return "Verdura [ Nome: "+getNome() +"\nPreço: "+getPreco()+"\nQuantidade"+getQuantidade()+"\nTipo: "+getTipo()+" ]";
+        return "Verdura \n[ Nome: "+getNome() +"\nPreço: "+getPreco()+"\nQuantidade"+getQuantidade()+"\nTipo: "+getTipo()+" ]";
 
     }
 }

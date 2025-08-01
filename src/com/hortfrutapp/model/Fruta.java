@@ -26,6 +26,6 @@ public class Fruta extends Produto {
 		@Override
 
 		public String toString(){
-			return "Fruta [ Nome: "+getNome() +"\nPreço: "+getPreco()+"\nQuantidade: "+getQuantidade()+"\nPeso: "+getPeso() +" ]";
+			return "Fruta \n[ Nome: "+getNome() +"\nPreço: "+getPreco()+"\nQuantidade: "+getQuantidade()+"\nPeso: "+getPeso() +" ]";
 		}
 }

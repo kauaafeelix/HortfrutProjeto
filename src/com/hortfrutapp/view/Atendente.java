@@ -4,7 +4,8 @@ import com.hortfrutapp.model.*;
 import java.util.Scanner;
 
 public class Atendente {
-	Scanner leia = new Scanner (System.in);
+	Scanner leiaStr = new Scanner (System.in);
+	Scanner leiaNum = new Scanner (System.in);
 
 
 			public int menu () {
@@ -17,7 +18,7 @@ public class Atendente {
 				System.out.println("=============================");
 				System.out.println("||       4 - Sair        ||");
 				System.out.println("Digite a opção desejada: ");
-				int opcao = leia.nextInt();
+				int opcao = leiaNum.nextInt();
 				return opcao;
 			}
 
@@ -25,40 +26,35 @@ public class Atendente {
 				System.out.println("1 - Cadastrar Fruta");
 				System.out.println("2 - Cadastrar Verdura");
 				System.out.println("Digite a opção desejada: ");
-				int opcaoSubMenu = leia.nextInt();
+				int opcaoSubMenu = leiaNum.nextInt();
 				return opcaoSubMenu;
 			}
 
-			public Fruta cadastrarFrutas(Scanner leia) {
+			public Fruta cadastrarFrutas(Scanner leiaStr, Scanner leiaNum) {
 				Fruta fruta = new Fruta();
 				System.out.println("\nDigite o nome da Fruta: ");
-				fruta.setNome(leia.nextLine()); 
+				fruta.setNome(leiaStr.nextLine()); 
 				System.out.println("Digite o Preço da Fruta: ");
-				fruta.setPreco(leia.nextDouble()); 
-				leia.nextLine();
+				fruta.setPreco(leiaNum.nextDouble()); 
 				System.out.println("Digite a Quantidade de Frutas: ");
-				fruta.setQuantidade(leia.nextInt());
-				leia.nextLine();
+				fruta.setQuantidade(leiaNum.nextInt());
 				System.out.println("Digite o Peso da Fruta (em Kg): ");
-				fruta.setPeso(leia.nextDouble());
-				leia.nextLine();
+				fruta.setPeso(leiaNum.nextDouble());
 				System.out.println("\nFruta cadastrada com sucesso!");
 				return fruta;
 
 			}
 		
-			public Verdura cadastrarVerduras(Scanner leia) {
+			public Verdura cadastrarVerduras(Scanner leiaStr, Scanner leiaNum) {
 				Verdura verdura = new Verdura();	
 				System.out.println("\nDigite o Nome da Verdura: ");
-				verdura.setNome(leia.nextLine());
+				verdura.setNome(leiaStr.nextLine());
 				System.out.println("Digite o Preço da Verdura: ");
-				verdura.setPreco(leia.nextDouble());
-				leia.nextLine();
+				verdura.setPreco(leiaNum.nextDouble());
 				System.out.println("Digite a Quantidade de Verduras: ");
-				verdura.setQuantidade(leia.nextInt());
-				leia.nextLine();
+				verdura.setQuantidade(leiaNum.nextInt());
 				System.out.println("Digite o Tipo da Verdura: ");
-				verdura.setTipo(leia.nextLine());
+				verdura.setTipo(leiaStr.nextLine());
 				System.out.println("\nVerdura cadastrada com sucesso!");
 				
 				return verdura;
@@ -76,7 +72,7 @@ public class Atendente {
 				System.out.println("=============================");
 				System.out.println("||       4 - Sair           ||");
 				System.out.println("Digite a opção desejada: ");
-				int opcao = leia.nextInt();
+				int opcao = leiaNum.nextInt();
 				return opcao;
 			}
 
@@ -87,19 +83,19 @@ public class Atendente {
 				System.out.println("=============================");
 				System.out.println("||       3 - Sair         ||");
 				System.out.println("Digite a opção desejada: ");
-				int opcao = leia.nextInt();
+				int opcao = leiaNum.nextInt();
 				return opcao;
 			}
 
 			public String removerFruta(){
 				System.out.println("\nDigite o nome da fruta que deseja remover: ");
-				String nomeFruta = leia.nextLine();
+				String nomeFruta = leiaStr.nextLine();
 				return nomeFruta;
 			}
 
 			public String removerVerdura(){
 				System.out.println("\nDigite o nome da verdura que deseja remover: ");
-				String nomeVerdura = leia.nextLine();
+				String nomeVerdura = leiaStr.nextLine();
 				return nomeVerdura;
 			}
 
